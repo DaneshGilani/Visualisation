@@ -8,11 +8,48 @@ output: html_document
 This is a test
 
 ```{r}
-print('This is a test')
+df <- read.csv('Hotel_Reviews.csv')
+head(df)
 
 ```
 
 ```{r}
-print('Adding another line')
+country[1:5]
+
+```
+
+```{r}
+library(stringr)
+
+country <- vector()
+city <- vector()
+
+for(address in df[,1]){
+  
+  if(word(address,-1) == "Kingdom"){
+    country <- c(country, paste(word(address, -2), word(address, -1), sep = " "))
+    city <- c(city, word(address, -5))
+  }
+  else{
+    country <- c(country, word(address, -1))
+    city <- c(city, word(address, -2))  
+  }
+}
+
+df['country'] <- country
+df['city'] <- city
+
+head(df)
+```
+
+
+
+
+```{r}
+library(ggplot2)
+
+ggplot(df, aes(Reviewer_Nationality)) +
+  geom_bar() #+ 
+  #theme_pubclean()
 
 ```
