@@ -49,7 +49,6 @@ head(df)
 library(ggplot2)
 
 ggplot(df, aes(Reviewer_Nationality)) +
-  geom_bar() #+ 
-  #theme_pubclean()
+  geom_bar()
 
 ```
